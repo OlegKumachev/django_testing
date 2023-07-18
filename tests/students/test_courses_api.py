@@ -48,7 +48,7 @@ def test_list_courses(client, courses_factory):
 def test_filter_id(client, courses_factory):
     course = courses_factory(id=3)
 
-    response = client.get(f"/api/v1/courses/?search={course.id}/")
+    response = client.get(f"/api/v1/courses/?id={course.id}")
 
     assert response.status_code == 200
     data = response.json()
@@ -62,7 +62,7 @@ def test_filter_name(client, courses_factory):
     course = courses_factory(name= 'Python')
 
 
-    response = client.get(f"/api/v1/courses/?search={course.name}/")
+    response = client.get(f"/api/v1/courses/?name={course.name}")
 
     assert response.status_code == 200
     data = response.json()
